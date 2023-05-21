@@ -124,7 +124,6 @@ describe("isAlive", () => {
     pet.fitness = 0;
     pet.hunger = 11;
     pet.age = 34;
-    const message = pet.isAlive();
-    expect(message).toEqual("false");
+    expect(pet.isAlive).toEqual(false);
   });
 });
