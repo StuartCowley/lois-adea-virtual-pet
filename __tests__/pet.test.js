@@ -117,3 +117,14 @@ describe("checkUp", () => {
     expect(message).toEqual("I feel great!");
   });
 });
+
+describe("isAlive", () => {
+  it(" returns false when fitness is <=0", () => {
+    const pet = new Pet("Fido");
+    pet.fitness = 0;
+    pet.hunger = 11;
+    pet.age = 34;
+    const message = pet.isAlive();
+    expect(message).toEqual("false");
+  });
+});
