@@ -44,6 +44,14 @@ describe("growUp", () => {
     pet.growUp();
     expect(pet.fitness).toEqual(7);
   });
+
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fido");
+
+    pet.age = 30;
+
+    expect(() => pet.growUp()).toThrow("Your pet is no longer alive :(");
+  });
 });
 
 describe("walk", () => {
@@ -64,16 +72,24 @@ describe("walk", () => {
 
     expect(pet.fitness).toEqual(10);
   });
+
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fido");
+
+    pet.age = 30;
+
+    expect(() => pet.walk()).toThrow("Your pet is no longer alive :(");
+  });
 });
 
 describe("feed", () => {
   it("decrease hunger by 3", () => {
     const pet = new Pet("fido");
 
-    pet.hunger = 10;
+    pet.hunger = 8;
     pet.feed();
 
-    expect(pet.hunger).toEqual(7);
+    expect(pet.hunger).toEqual(5);
   });
 
   it(" decreases hunger =>0", () => {
@@ -83,6 +99,14 @@ describe("feed", () => {
     pet.feed();
 
     expect(pet.hunger).toEqual(0);
+  });
+
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fido");
+
+    pet.age = 30;
+
+    expect(() => pet.feed()).toThrow("Your pet is no longer alive :(");
   });
 });
 
@@ -115,6 +139,13 @@ describe("checkUp", () => {
     pet.fitness = 7;
     const message = pet.checkUp();
     expect(message).toEqual("I feel great!");
+  });
+
+  it("returns 'Your pet is no longer alive :(' if isAlive is false", function () {
+    const pet = new Pet("Fido");
+    pet.age = 31;
+    expect(pet.isAlive).toEqual(false);
+    expect(pet.checkUp()).toEqual("Your pet is no longer alive :(");
   });
 });
 
