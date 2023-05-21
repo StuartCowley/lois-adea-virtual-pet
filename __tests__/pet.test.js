@@ -158,3 +158,32 @@ describe("isAlive", () => {
     expect(pet.isAlive).toEqual(false);
   });
 });
+
+describe("adoptChild", function () {
+  it("adds child to children array", function () {
+    const parent = new Pet("Dave");
+    const child = new Pet("Amelia");
+
+    parent.adoptChild(child);
+
+    expect(parent.children).toEqual([child]);
+  });
+});
+
+describe("haveBaby", function () {
+  it("creates a new child", function () {
+    const parent = new Pet("Dave");
+
+    const child = parent.haveBaby("Amelia");
+    expect(child).toBeInstanceOf(Pet);
+    expect(child.name).toEqual("Amelia");
+  });
+
+  it("adds new child to the children array", function () {
+    const parent = new Pet("Dave");
+
+    const child = parent.haveBaby("Amelia");
+
+    expect(parent.children).toEqual([child]);
+  });
+});
