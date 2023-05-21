@@ -22,4 +22,13 @@ Pet.prototype.walk = function () {
   }
 };
 
+Pet.prototype.feed = function () {
+  const newHunger = this.hunger - 3;
+  if (newHunger < 0) {
+    this.hunger = 0;
+  } else {
+    this.hunger = newHunger;
+  }
+};
+
 module.exports = Pet;
